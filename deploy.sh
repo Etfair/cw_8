@@ -1,5 +1,5 @@
 python3 -m venv venv
-source venv/Scripts/activate.bat
+source venv/bin/activate
 pip3 install -r requirements.txt
 python3 manage.py migrate
 python3 manage.py collectstatic --no-input
