@@ -122,7 +122,8 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': os.getenv('DATABASES_DEFAULT_ENGINE'),
+        # 'ENGINE': os.getenv('DATABASES_DEFAULT_ENGINE'),
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'etfair',
         # 'NAME': os.getenv('DATABASES_DEFAULT_NAME'),
         'USER': os.getenv('DATABASES_DEFAULT_USER'),
