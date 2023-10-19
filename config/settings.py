@@ -124,11 +124,12 @@ DATABASES = {
     'default': {
         # 'ENGINE': os.getenv('DATABASES_DEFAULT_ENGINE'),
         'ENGINE': 'django.db.backends.postgresql',
-        # 'NAME': 'etfair',
-        'NAME': os.getenv('DATABASES_DEFAULT_NAME'),
-        'USER': os.getenv('DATABASES_DEFAULT_USER'),
-        'PASSWORD': os.getenv('DATABASES_DEFAULT_PASSWORD'),
-        'HOST': os.getenv('DB_HOST'),
+        'NAME': 'etfair',
+        # 'NAME': os.getenv('DATABASES_DEFAULT_NAME'),
+        'USER': 'postgres',
+        # 'USER': os.getenv('DATABASES_DEFAULT_USER'),
+        # 'PASSWORD': os.getenv('DATABASES_DEFAULT_PASSWORD'),
+        # 'HOST': os.getenv('DB_HOST'),
     }
 }
 
