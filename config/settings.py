@@ -130,7 +130,6 @@ DATABASES = {
         # 'USER': os.getenv('DATABASES_DEFAULT_USER'),
         # 'PASSWORD': os.getenv('DATABASES_DEFAULT_PASSWORD'),
         # 'HOST': os.getenv('DB_HOST'),
-        'HOST': '127.0.0.1'
     }
 }
 
