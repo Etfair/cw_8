@@ -1,9 +1,9 @@
 Инструкция по запуску проекта:
-Шаг 1. Клонирование репозитория
+Клонирование репозитория
 
 https://github.com/Etfair/CW_8 
 
-Шаг 2. Установка зависимостей
+Установка зависимостей
 1. Убедитесь, что в системе установлен Python3.x. Если нет, установите его в соответствии с инструкциями для вашей операционной системы.
 2. Создайте виртуальное окружение
 
@@ -16,44 +16,8 @@ venv/Scripts/activate.bat
 
 4. Установить зависимости проекта, указанные в файле requirements.txt
 
-pip install -r requirements.txt
 
-Шаг 3. Установка и настройка Redis
-1. Установить Redis, если он не установлен. Например, для Ubuntu выполнить следующую команду 
-
-sudo apt-get install redis-service
-
-2. Запустить Redis
-
-sudo service redis-server start
-
-Это запустит Redis сервер и он будет слушать на стандартном порту 6379
-3. Убедиться что Redis работает правильно, командой
-
-redis-cli ping
-
-Если Redis работает должным образом, в ответ придёт PONG.
-
-Шаг 4. Установка и настройка PostgreSQL
-1. УСтановить PostgreSQL, если он не установлен. Например, для Ubuntu выполнить следующую команду
-
-sudo apt-get install postgresql
-
-2. Выполнить вход в интерактивную оболочку PostgreSQL от имени пользователя postgres
-
-sudo -u postgres psql
-
-3. Внутри интерактивной оболочки PostgreSQL создать базу данных с помощью следующей команды:
-
-CREATE DATABASE name_db;
-
-name_db - Название БД(можно указать другое название)
-
-4. Закрыть интерактивную оболочку PostgreSQL
-
-\q
-
-Шаг 5. Настройка окружения
+Настройка окружения
 1. В директории проекта создать файл .env
 
 touch .env
@@ -68,44 +32,25 @@ DATABASES_DEFAULT_ENGINE=django.db.backends.postgresql_psycopg2
 DATABASES_DEFAULT_NAME=name_db
 DATABASES_DEFAULT_USER=имя_пользователя
 DATABASES_DEFAULT_PASSWORD=пароль_пользователя
+DB_HOST=
 
 EMAIL_HOST_USER=почта_для_аутентификации
 EMAIL_HOST_PASSWORD=пароль
 
 В каталоге проекта есть шаблон файла .env
 
-Шаг 6. Применение миграций
-1. Из каталога проекта выполнить команду
+Для запуска Docker:
 
-python manage.py migrate
+Установите Docker desktop;
+В терминале введите команду для создания контейнера:
+docker compose build
+и
+docker compose up
 
-Шаг 7. Запуск сервера Django
-1. Открыть новое окно терминала
-2. Если виртуальное окружение неактивно, активируйте его
+Для применения миграция:
+docker compose exec app python manage.py migrate
 
-source venv/Scripts/activate
-
-3. Из каталога проекта запустить сервер
-
-python manage.py runserver
-
-Шаг 8. Для создания администратора запустить команду:
-
-python3 manage.py ccsu
-
-Шаг 9. Для запуска celery:
-
-celery -A config worker --loglevel=info
-
-Шаг 10. Для запуска django-celery-beat:
-
-celery -A config beat --loglevel=info
-
-Шаг 11. Для тестирования проекта запустить команду:
-
-python3 manage.py test
-
-Шаг 12. Создание бот в телеграм
+Создание бот в телеграм
 
 Заходим в Телеграм, в строке «Поиск» находим BotFather – это конструктор чат-ботов в Телеграме, нажимаем «Старт».
 Чтобы создать нового, нужно нажать на /newbot.
