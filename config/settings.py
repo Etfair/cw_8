@@ -24,13 +24,12 @@ load_dotenv(dotenv_path=dot_env)
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = os.getenv('SECRET_KEY')
-SECRET_KEY = 'django-insecure-$r=(w%=5y=u+)73e#ark1@mdl)5v3x*=ze!bkkced_&_$n-=1j'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG')
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -122,14 +121,11 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': os.getenv('DATABASES_DEFAULT_ENGINE'),
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'etfair',
-        # 'NAME': os.getenv('DATABASES_DEFAULT_NAME'),
-        'USER': 'postgres',
-        # 'USER': os.getenv('DATABASES_DEFAULT_USER'),
-        # 'PASSWORD': os.getenv('DATABASES_DEFAULT_PASSWORD'),
-        # 'HOST': os.getenv('DB_HOST'),
+        'ENGINE': os.getenv('DATABASES_DEFAULT_ENGINE'),
+        'NAME': os.getenv('DATABASES_DEFAULT_NAME'),
+        'USER': os.getenv('DATABASES_DEFAULT_USER'),
+        'PASSWORD': os.getenv('DATABASES_DEFAULT_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
     }
 }
 
@@ -214,7 +210,7 @@ if CACHE_ENABLED:
     }
 
 # URL-адрес брокера сообщений
-CELERY_BROKER_URL = 'redis://localhost:6379'  # Например, Redis, который по умолчанию работает на порту 6379
+CELERY_BROKER_URL = 'redis://redis:6379/0'  # Например, Redis, который по умолчанию работает на порту 6379
 
 # URL-адрес брокера результатов, также Redis
 CELERY_RESULT_BACKEND = 'redis://localhost:6379'

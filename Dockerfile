@@ -1,10 +1,10 @@
-FROM python:3
+FROM python:3.11
 
 WORKDIR /homework_27_1
 
 COPY ./requirements.txt /homework_27_1/
 
-RUN python.exe -m pip install --upgrade pip
+#RUN python.exe -m pip install --upgrade pip
 
 RUN pip install -r requirements.txt --no-cache-dir
 

@@ -4,8 +4,9 @@ services:
       image: redis
       ports:
         - '6379:6379'
+
   db:
-    image: postgres
+    image: postgres:14
     env_file:
       - .env
     volumes:
@@ -17,6 +18,7 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+
   app:
     build: .
     tty: true
@@ -31,6 +33,7 @@ services:
         condition: service_healthy
     env_file:
       - .env
+
   celery:
     restart: always
     build: .
@@ -40,6 +43,15 @@ services:
     depends_on:
       - app
       - redis
+
+  celery-beat:
+    build: .
+    restart: always
+    tty: true
+    command: celery -A config beat -l info -S django
+    depends_on:
+      - redis
+      - app
 volumes:
   pg_data:
   static:
