@@ -7,8 +7,12 @@ services:
 
   db:
     image: postgres:14
-    env_file:
-      - .env
+    environment:
+      POSTGRES_DB: ${DATABASES_DEFAULT_NAME}
+      POSTGRES_USER: ${DATABASES_DEFAULT_USER}
+      POSTGRES_PASSWORD: ${DATABASES_DEFAULT_PASSWORD}
+
+    container_name: db
     volumes:
       - pg_data:/var/lib/postgresql/data/pgdata
     ports:
